@@ -14,6 +14,27 @@ public class Henkilo {
         this.pituus = pituus;
         this.paino = paino;
     }
+    
+    public boolean equals(Object verrattava) {
+        if (this == verrattava) {
+            return true;
+        }
+        
+        if (!(verrattava instanceof Henkilo)) {
+            return false;
+        }
+        
+        Henkilo verrattavaHenkilo = (Henkilo) verrattava;
+        
+        if (this.nimi.equals(verrattavaHenkilo.nimi) &&
+            this.pituus == verrattavaHenkilo.pituus &&
+            this.paino == verrattavaHenkilo.paino &&
+            this.syntymaPaiva.equals(verrattavaHenkilo.syntymaPaiva)) {
+            return true;
+        } 
+        
+        return false;
+    }
 
     // toteuta tänne equals-metodi, jolla tarkastellaan olioiden samuutta
 }

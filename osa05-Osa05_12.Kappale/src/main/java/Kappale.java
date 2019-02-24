@@ -10,6 +10,27 @@ public class Kappale {
         this.nimi = nimi;
         this.pituusSekunteina = pituusSekunteina;
     }
+    
+    public boolean equals(Object verrattava) {
+        
+        if (this == verrattava) {
+            return true;
+        }
+        
+        if (!(verrattava instanceof Kappale)) {
+            return false;
+        }
+        
+        Kappale verrattavaKappale = (Kappale) verrattava;
+        
+        if (this.esittaja.equals(verrattavaKappale.esittaja) &&
+            this.nimi.equals(verrattavaKappale.nimi) &&
+            this.pituusSekunteina == verrattavaKappale.pituusSekunteina) {
+            return true;
+        } 
+        
+        return false;
+    }
 
     @Override
     public String toString() {
