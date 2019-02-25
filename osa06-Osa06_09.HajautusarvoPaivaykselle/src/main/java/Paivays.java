@@ -11,6 +11,14 @@ public class Paivays {
         this.vuosi = vuosi;
     }
 
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + this.paiva;
+        hash = 67 * hash + this.kuukausi;
+        hash = 67 * hash + this.vuosi;
+        return hash;
+    }
+    
     @Override
     public String toString() {
         return this.paiva + "." + this.kuukausi + "." + this.vuosi;

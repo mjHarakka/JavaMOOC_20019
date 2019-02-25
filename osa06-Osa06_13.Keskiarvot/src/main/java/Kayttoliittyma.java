@@ -47,6 +47,9 @@ public class Kayttoliittyma {
             arvosana = arvosana - 1;
         }
         
+        System.out.println("Koepisteiden keskiarvo: " + rekisteri.koepisteidenKeskiarvo());
+        System.out.println("Arvosanojen keskiarvo: " + rekisteri.arvosanojenKeskiarvo());
+        
     }
 
     public static void tulostaTahtia(int tahtia) {

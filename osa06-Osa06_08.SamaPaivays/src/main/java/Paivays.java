@@ -10,6 +10,31 @@ public class Paivays {
         this.kuukausi = kuukausi;
         this.vuosi = vuosi;
     }
+    
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+
+        // jos verrattava olio ei ole Paivays-tyyppinen, oliot eivät ole samat
+        if (!(object instanceof Paivays)) {
+            return false;
+        }
+        
+        Paivays verrattavaPaivays = (Paivays) object;
+
+        // jos olioiden oliomuuttujien arvot ovat samat, ovat oliot samat
+        if (this.paiva == verrattavaPaivays.paiva
+                && this.kuukausi == verrattavaPaivays.kuukausi
+                && this.vuosi == verrattavaPaivays.vuosi) {
+            return true;
+        }
+
+        // muulloin oliot eivät ole samat
+        return false;
+        
+        
+    }
 
     @Override
     public String toString() {

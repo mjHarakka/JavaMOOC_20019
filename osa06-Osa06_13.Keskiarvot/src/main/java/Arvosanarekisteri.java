@@ -1,12 +1,28 @@
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Arvosanarekisteri {
 
     private HashMap<Integer, Integer> arvosanat;
+    private ArrayList<Integer> lista;
 
     public Arvosanarekisteri() {
         this.arvosanat = new HashMap<>();
+        this.lista = new ArrayList<>();
+    }
+    
+    public double arvosanojenKeskiarvo() {
+        
+        int summa = 0;
+        int lkm = 0;
+        
+        for (int luku: arvosanat.keySet()) {
+            summa += luku * arvosanat.get(luku);
+            lkm += arvosanat.get(luku);
+        }
+        
+        return summa / (double)lkm;
     }
 
     public void lisaaArvosanaPisteidenPerusteella(int pisteet) {
@@ -14,6 +30,18 @@ public class Arvosanarekisteri {
 
         int lkm = this.arvosanat.getOrDefault(arvosana, 0);
         this.arvosanat.put(arvosana, lkm + 1);
+        
+        this.lista.add(pisteet);
+    }
+    
+    public double koepisteidenKeskiarvo() {
+        int summa = 0;
+        
+        for (int luku: lista) {
+            summa += luku;
+        }
+        
+        return summa / (double)lista.size();
     }
 
     public int montakoSaanutArvosanan(int arvosana) {
