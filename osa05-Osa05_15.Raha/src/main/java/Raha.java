@@ -14,6 +14,33 @@ public class Raha {
         this.euroa = euroa;
         this.senttia = senttia;
     }
+    
+    public boolean vahemman(Raha verrattava) {
+        
+        if (this.eurot() == verrattava.eurot()) {
+            
+            if (this.sentit() < verrattava.sentit()) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        } 
+        
+        if (this.eurot() < verrattava.eurot()) {
+            return true;
+        } else {
+            return false;
+        }
+        
+        
+    }
+    
+    public Raha plus(Raha lisattava) {
+        Raha uusi = new Raha(this.eurot() + lisattava.eurot(), this.sentit() + lisattava.sentit());
+        
+        return uusi;
+    }
 
     public int eurot() {
         return this.euroa;
