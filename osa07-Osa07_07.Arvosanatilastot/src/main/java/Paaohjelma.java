@@ -8,5 +8,10 @@ public class Paaohjelma {
 
         // Tee sovelluksesi tänne -- kannattaa harkita sovelluksen pilkkomista
         // useampaan luokkaan.
+        
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
+        
+        kayttoliittyma.run();
+        
     }
 }
