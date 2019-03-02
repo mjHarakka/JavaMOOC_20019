@@ -31,8 +31,7 @@ public class Parser {
             int i = 0;
             
             while (true) {
-                
-                
+
                 this.lines.add(tiedostoLukija.nextLine());
                 
                 if (!tiedostoLukija.hasNextLine()) {
@@ -59,31 +58,31 @@ public class Parser {
 
             if (index == 0) {
                  reseptiNimi = lines.get(i);
+
             } else if (index == 1) {
                 keittoAika = Integer.parseInt(lines.get(i));
+
             } else if (index > 1) {
                 raakaAineet.add(lines.get(i));
+
             }
             
-            
             index++;
-            
-            
-            if (lines.get(i).isEmpty()) {
+             
+            if (lines.get(i).isEmpty() || i == lines.size() - 1) {
                 this.reseptit.add(new Resepti(reseptiNimi, keittoAika, raakaAineet));
                 raakaAineet = new ArrayList<>();
                 index = 0;
-                
             }
-            
+
             i++;
             
         }
    
     }
     
-    public Resepti getResepti(int luku) {
-        return this.reseptit.get(luku);
+    public ArrayList<Resepti> getReseptit() {
+        return this.reseptit;
     }
     
 }

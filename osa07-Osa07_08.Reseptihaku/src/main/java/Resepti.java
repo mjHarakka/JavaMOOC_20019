@@ -21,9 +21,21 @@ public class Resepti {
         this.raakaAineet = raakaAineet;
     }
     
+    public String getNimi() {
+        return this.reseptiNimi;
+    }
+    
+    public int getAika() {
+        return this.keittoAika;
+    }
+    
+    public ArrayList<String> getAineet() {
+        return this.raakaAineet;
+    }
+    
     @Override
     public String toString() {
-        return this.reseptiNimi + this.keittoAika + this.raakaAineet;
+        return this.reseptiNimi + ", keittoaika: " + this.keittoAika;
     }
     
 }
