@@ -9,16 +9,29 @@ public class Tavara {
         this.paino = paino;
     }
 
+    public int hashCode() {
+        return this.nimi.hashCode();
+    }
+
+    public boolean equals(Tavara t) {
+        if (this.nimi.equals(t.getNimi())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+
     public Tavara(String nimi) {
         this(nimi, 0);
     }
 
     public String getNimi() {
-        return nimi;
+        return this.nimi;
     }
 
     public int getPaino() {
-        return paino;
+        return this.paino;
     }
 
 }

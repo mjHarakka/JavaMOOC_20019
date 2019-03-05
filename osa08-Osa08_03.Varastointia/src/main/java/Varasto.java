@@ -2,8 +2,8 @@
 
 public class Varasto {
 
-    private double tilavuus;
-    private double saldo;
+    protected double tilavuus;
+    protected double saldo;
 
     public Varasto(double tilavuus) {
         if (tilavuus > 0.0) {

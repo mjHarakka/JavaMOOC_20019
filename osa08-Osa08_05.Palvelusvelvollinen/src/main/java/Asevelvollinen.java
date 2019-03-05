@@ -16,14 +16,14 @@ public class Asevelvollinen implements Palvelusvelvollinen {
     }
     
     public int paiviaJaljella() {
-        return this.paivia;
+        return this.tj;
     }
     
     public void palvele() {
         
-        if (paivia > 0) {
-            this.paivia--;
-        } 
+        if (this.tj > 0) {
+            this.tj--;
+        }
     }
     
 }
