@@ -22,8 +22,9 @@ public class Elio implements Siirrettava {
         this.y += dy;
     }
     
+    @Override
     public String toString() {
-        
+        return "x: " + this.x + "; y: " + this.y;
     }
 
 }
