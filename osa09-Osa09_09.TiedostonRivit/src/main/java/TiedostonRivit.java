@@ -13,5 +13,19 @@ public class TiedostonRivit {
         // testaa metodia täällä
 
     }
+    
+    public static List<String> lue(String tiedosto) {
+        
+        List<String> rivit = new ArrayList<>();
+        
+        try {
+            Files.lines(Paths.get(tiedosto))
+                    .forEach(rivi -> rivit.add(rivi));
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        
+        return rivit;
+    }
 
 }
