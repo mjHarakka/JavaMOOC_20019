@@ -10,10 +10,7 @@ public class Lukutaitovertailu {
     
     public static void main(String[] args) {
         
-    List<Maa> maat = lueKirjat("lukutaito.csv");
-        
-        
-    
+        List<Maa> maat = lueKirjat("lukutaito.csv");
         maat.stream()
                 .sorted((m1, m2) -> {
                 return Double.compare(m1.getLkPros(), m2.getLkPros());

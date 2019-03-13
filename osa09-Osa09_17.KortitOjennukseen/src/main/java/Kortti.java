@@ -1,6 +1,6 @@
 
 
-public class Kortti {
+public class Kortti implements Comparable<Kortti> {
 
     private int arvo;
     private Maa maa;
@@ -14,6 +14,22 @@ public class Kortti {
         this.maa = maa;
     }
 
+    @Override
+    public int compareTo(Kortti k) {
+        
+        if (this.arvo == k.getArvo() && this.maa == k.getMaa()) {
+            return 0;
+        } else if (this.arvo == k.getArvo() && this.maa.ordinal() < k.getMaa().ordinal()) {
+            return -1;
+        } else if (this.arvo == k.getArvo()) {
+            return maa.ordinal();
+        }else if (this.arvo < k.getArvo()) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+    
     @Override
     public String toString() {
         String kortinArvo = "" + arvo;
