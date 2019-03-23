@@ -17,15 +17,86 @@ public class Taikanelio {
 
     // toteuta nämä kolme metodia
     public ArrayList<Integer> rivienSummat() {
-        return new ArrayList<>();
+        ArrayList<Integer> al = new ArrayList<>();
+        
+        for (int rivit = 0; rivit < nelio.length; rivit++) {
+            int summa = 0;
+            for (int sarakkeet = 0; sarakkeet < nelio.length; sarakkeet++) {
+                summa += nelio[rivit][sarakkeet];
+            }
+            al.add(summa);
+        }
+        
+        return al;
     }
 
     public ArrayList<Integer> sarakkeidenSummat() {
-        return new ArrayList<>();
+        ArrayList<Integer> al = new ArrayList<>();
+        
+        for (int rivit = 0; rivit < nelio.length; rivit++) {
+            int summa = 0;
+            for (int sarakkeet = 0; sarakkeet < nelio.length; sarakkeet++) {
+                summa += nelio[sarakkeet][rivit];
+            }
+            al.add(summa);
+        }
+        
+        return al;
     }
 
     public ArrayList<Integer> lavistajienSummat() {
-        return new ArrayList<>();
+        ArrayList<Integer> al = new ArrayList<>();
+        int lavistajienLkm = nelio.length*2 -1;
+         
+            int sum = 0;
+            int x = 0;
+            
+            for (int i = 0; i < nelio.length; i++) {
+                sum += nelio[i][x];
+                x++;
+            }
+            al.add(sum);
+            x = 0;
+            sum = 0;
+            
+            for (int i = 1; i <= nelio.length; i++) {
+                sum += nelio[nelio.length-i][x];
+                x++;
+            }
+            al.add(sum);
+           
+        
+        
+        
+        
+        
+        // https://stackoverflow.com/questions/20420065/loop-diagonally-through-two-dimensional-array
+        /*
+        for(int k = 0 ; k < nelio.length * 2 - 1; k++ ) {
+            int sum = 0;
+            
+            for( int j = 0 ; j <= k ; j++ ) {
+                
+                int i = k - j;
+                
+                if( i < nelio.length && j < nelio.length ) {
+                    sum += nelio[i][j];
+                }
+                
+            }
+            
+            al.add(sum);
+        }
+        
+        int sum = 0;
+        sum += al.get(0);
+        sum += al.get(al.size()-1);
+        al.remove(0);
+        al.remove(al.size()-1);
+        al.add(sum);
+        */
+        
+        return al;
     }
 
     // valmiit apumetodit -- älä koske näihin

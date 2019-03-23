@@ -8,9 +8,12 @@ public class Taikaneliotehdas {
         int x = koko/2;
         int y = 0;
         int arvo = 1;
-        int i = 0;
         
-        while (i < 501) {
+        while (true) {
+            
+            if (arvo > koko*koko) {
+                break;
+            }
             
             if (nelio.onTaikanelio()) {
                 break;
@@ -41,10 +44,6 @@ public class Taikaneliotehdas {
             if (x > koko-1) {
                 x = 0;
             }
-
-
-            i++;
-            
             
         }
             
