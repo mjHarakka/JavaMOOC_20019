@@ -9,8 +9,11 @@
  * @author mikkoharakka
  */
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.security.PublicKey;
 
 public class Hajautustaulu<K, V> {
+    
     private ArrayList<Pari<K, V>> arvot;
     private int arvoja;
 
@@ -20,36 +23,21 @@ public class Hajautustaulu<K, V> {
     }
     
     public void lisaa(K avain, V arvo) {
-        this.arvot.add(new Pari(avain, arvo));
-    }
-    
-    public V poista(K avain) {
-        Pari<K, V> poistettava;
-        
-        for (Pari<K, V> pari: arvot) {
-            if (avain.equals(pari.getAvain())) {
-                poistettava = pari;
-                this.arvot.remove(pari);
-                return pari.getArvo();
-            } else {
-                return null;
-            }
-        }
-        
+        int hajautusArvo = Math.abs(avain.hashCode() % (arvot.size() + 1));
+        if (arvot.get(hajautusArvo) == null) {
+            Pari<K, V> tempPari = new Pari<>(avain, arvo);
+            arvot.add(hajautusArvo, tempPari);
+        } 
+
     }
     
     public V hae(K avain) {
-        int hajautusArvo = Math.abs(avain.hashCode() % this.arvot.size());
+        int hajautusArvo = Math.abs(avain.hashCode() % (this.arvot.size() + 1));
         if (this.arvot.get(hajautusArvo) == null) {
             return null;
+        } else {
+            return this.arvot.get(hajautusArvo).getArvo();
         }
-
-        for (Pari<K, V> pari: arvot) {
-            if (avain.equals(pari.getAvain())) {
-                return pari.getArvo();
-            }
-        }
-
-        return null;
     }
+    
 }

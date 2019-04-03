@@ -8,9 +8,11 @@ public class Ohjelma {
         Scanner lukija = new Scanner(System.in);
         // voit testata luokkaasi täällä
         Pari<String, Integer> pari = new Pari<>("yksi", 1);
-        System.out.println(pari.getAvain() + " -> " + pari.getArvo());
+        Hajautustaulu hashTable = new Hajautustaulu();
         
-        
+        hashTable.lisaa(pari.getAvain(), pari.getArvo());
+       
+        System.out.println(hashTable.hae(pari));
         
     }
 
