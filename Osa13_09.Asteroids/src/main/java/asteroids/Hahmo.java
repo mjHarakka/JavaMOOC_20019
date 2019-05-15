@@ -6,7 +6,7 @@ package asteroids;
  * and open the template in the editor.
  */
 
-import asteroids.AsteroidsSovellus;
+
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
