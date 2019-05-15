@@ -1,12 +1,11 @@
 package asteroids;
 
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -19,6 +18,7 @@ public class AsteroidsSovellus extends Application {
 
     public static int LEVEYS = 300;
     public static int KORKEUS = 200;
+    List<Ammus> ammukset = new ArrayList<>();
     
     @Override
     public void start(Stage stage) throws Exception {        
@@ -52,6 +52,9 @@ public class AsteroidsSovellus extends Application {
 
             @Override
             public void handle(long nykyhetki) {
+                
+                
+                
                 if(painetutNapit.getOrDefault(KeyCode.LEFT, false)) {
                     alus.kaannaVasemmalle();
                 }
@@ -64,14 +67,54 @@ public class AsteroidsSovellus extends Application {
                     alus.kiihdyta();
                 }
 
+                if (painetutNapit.getOrDefault(KeyCode.SPACE, false) && ammukset.size() < 3) {
+                    // ammutaan
+                    Ammus ammus = new Ammus((int) alus.getHahmo().getTranslateX(), (int) alus.getHahmo().getTranslateY());
+                    ammus.getHahmo().setRotate(alus.getHahmo().getRotate());
+                    ammukset.add(ammus);
+
+                    ammus.kiihdyta();
+                    ammus.setLiike(ammus.getLiike().normalize().multiply(3));
+
+                    ruutu.getChildren().add(ammus.getHahmo());
+                }
+                
+                
+                
+                
                 alus.liiku();
                 asteroidit.forEach(asteroidi -> asteroidi.liiku());
+                ammukset.forEach(ammus -> ammus.liiku());
 
                 asteroidit.forEach(asteroidi -> {
                     if (alus.tormaa(asteroidi)) {
                         stop();
                     }
                 });
+
+                ammukset.forEach(ammus -> {
+                    asteroidit.forEach(asteroidi -> {
+                        if(ammus.tormaa(asteroidi)) {
+                            ammus.setElossa(false);
+                            asteroidi.setElossa(false);
+                        }
+                    });
+                });
+               
+                ammukset.stream()
+                    .filter(ammus -> !ammus.isElossa())
+                    .forEach(ammus -> ruutu.getChildren().remove(ammus.getHahmo()));
+                ammukset.removeAll(ammukset.stream()
+                    .filter(ammus -> !ammus.isElossa())
+                    .collect(Collectors.toList()));
+                
+                asteroidit.stream()
+                    .filter(asteroidi -> !asteroidi.isElossa())
+                    .forEach(asteroidi -> ruutu.getChildren().remove(asteroidi.getHahmo()));
+                asteroidit.removeAll(asteroidit.stream()
+                    .filter(asteroidi -> !asteroidi.isElossa())
+                    .collect(Collectors.toList()));
+                
             }
         }.start();
         

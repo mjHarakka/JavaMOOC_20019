@@ -15,13 +15,30 @@ public abstract class Hahmo {
 
     private Polygon hahmo;
     private Point2D liike;
+    private boolean elossa;
 
     public Hahmo(Polygon monikulmio, int x, int y) {
         this.hahmo = monikulmio;
         this.hahmo.setTranslateX(x);
         this.hahmo.setTranslateY(y);
-
         this.liike = new Point2D(0, 0);
+        this.elossa = true;
+    }
+    
+    public boolean isElossa() {
+        return elossa;
+    }
+
+    public void setElossa(boolean bool) {
+        this.elossa = bool;
+    }
+    
+    public Point2D getLiike() {
+        return liike;
+    }
+
+    public void setLiike(Point2D liike) {
+        this.liike = liike;
     }
     
     public boolean tormaa(Hahmo toinen) {
