@@ -30,7 +30,6 @@ public class HymioSovellus extends Application {
         piirturi.fillRect(400, 500, 100, 100);
         piirturi.fillRect(500, 500, 100, 100);
     
-        
         BorderPane asettelu = new BorderPane();
         asettelu.setCenter(piirtoalusta);
         
